@@ -1,0 +1,9 @@
+/* pages/home/home.wxss */
+.home-swiper{
+  width: 750rpx;
+  height: 278rpx;
+}
+.home-banner{
+  width: 100%;
+  height: 100%;
+}
