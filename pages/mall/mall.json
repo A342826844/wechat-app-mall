@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-tab": "/lib/vant/dist/tab/index",
+    "van-tag": "/lib/vant/dist/tag/index",
+    "van-tabs": "/lib/vant/dist/tabs/index",
+    "van-loading": "/lib/vant/dist/loading/index"
+  }
 }

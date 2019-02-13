@@ -1,1 +1,40 @@
 /* pages/mall/mall.wxss */
+page{
+  /* display: flex; */
+  height: 100%;
+  box-sizing: border-box; 
+}
+.tabs{
+  height: 20%;
+}
+.scroll{
+  height: 88%;
+  padding-top: 10px; 
+}
+.content{
+  display: flex;
+  flex-wrap:wrap;
+}
+.item{
+  width: 50%;
+  height: 565rpx;
+}
+.msg{
+  padding:0 10px; 
+}
+.title, .sale-num{
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.sale-num{
+  float: right
+}
+.price{
+  color: #f00
+}
+.toast{
+  text-align: center
+}

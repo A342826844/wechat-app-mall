@@ -1,2 +1,42 @@
 <!--pages/mall/mall.wxml-->
-<text>pages/mall/mall.wxml</text>
+<van-tabs
+  bind:click="handleChange"
+  active="{{ active }}"
+  class="tabs"
+>
+  <van-tab
+    title="{{item.name}}"
+    wx:for="{{tab}}"
+    wx:key="{{item.id}}"
+  ></van-tab>
+</van-tabs>
+
+<scroll-view
+  scroll-y
+  bindscrolltolower="lower"
+  class='scroll'
+  scroll-top="{{scrollTop}}"
+>
+  <view class='content'>
+    <navigator
+      wx:for="{{list}}"
+      wx:key="{{index}}"
+      class='item'
+      url="{{item.type === 1 ? '/pages/detail/detail?id='+item.id : '/pages/other/other'}}"
+    >
+      <image src="{{item.image}}" mode='widthFix' style='width:375rpx'></image>
+      <view wx:if="{{item.type === 1}}" class='msg'>
+        <view class='title'>{{item.title}}</view>
+        <view>
+          <van-tag type="danger">{{item.isFreePostage ? "包邮" : ""}}</van-tag>
+          <text class='sale-num'>{{item.saleNum}}已购买</text>
+        </view>
+        <view class='price'>￥{{item.price}}</view>
+      </view>
+    </navigator>
+  </view>
+  <view class='toast'>
+    <text wx:if="{{!isEnd}}">加载中</text><van-loading type="spinner" />
+    <view wx:if="{{isEnd}}" >到底了！</view>
+  </view>
+</scroll-view>
