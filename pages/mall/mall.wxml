@@ -29,7 +29,7 @@
         <view class='title'>{{item.title}}</view>
         <view>
           <van-tag type="danger">{{item.isFreePostage ? "包邮" : ""}}</van-tag>
-          <text class='sale-num'>{{item.saleNum}}已购买</text>
+          <text class='sale-num'>{{item.saleNum}}人已购买</text>
         </view>
         <view class='price'>￥{{item.price}}</view>
       </view>

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-goods-action": "/lib/vant/dist/goods-action/index",
+    "van-goods-action-icon": "/lib/vant/dist/goods-action-icon/index",
+    "van-goods-action-button": "/lib/vant/dist/goods-action-button/index"
+  }
 }

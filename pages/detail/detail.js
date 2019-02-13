@@ -1,18 +1,43 @@
 // pages/detail/detail.js
+import ajax from '../../utils/ajax.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    interval: 3000,
+    duration: 1000,
+    banner: [],
+    contentList: [],
+    id: 0,
+    hints: [],
+    title: '',
+    price: 0,
+    originPrice: 0,
+    saleNum: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    options.id = options.id ? options.id : 3202228
+    ajax.getData(`http://www.xiongmaoyouxuan.com/api/detail?id=${options.id}&normal=1&sa=`)
+      .then( res => {
+        console.log(res)
+        const { title, price, originPrice, id, saleNum} = res.detail
+        this.setData({
+          title,
+          price,
+          originPrice,
+          id,
+          saleNum,
+          banner: res.detail.photo,
+          contentList: res.detail.descContentList,
+          hints: res.detail.accessoryHints
+        })
+      })
   },
 
   /**
