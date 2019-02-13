@@ -1,33 +1,41 @@
 // pages/search/search.js
+import ajax from '../../utils/ajax.js'
 Page({
-
+  inputKey(e){
+    if (e.target.dataset.ishight) {
+      wx.redirectTo({
+        url: 'pages/other/other'
+      })
+    } else {
+      this.setData({
+        value: e._relatedInfo.anchorTargetText
+      })
+    }
+  },
   /**
    * 页面的初始数据
    */
   data: {
-    inputShowed: true,
-    inputVal: ""
+    value: "",
+    hotWords: []
   },
-  
-  showInput: function () {
-    this.setData({
-      inputShowed: true
-    });
+
+  onSearch(){
+    const {value} = this.data
+    if(value){
+      wx.navigateTo({
+        url: `/pages/other/other?q=${value}`,
+        success: () => {
+          this.setData({
+            value: ''
+          })
+        }
+      })
+    }
   },
-  hideInput: function () {
+  onChange(e) {
     this.setData({
-      inputVal: "",
-      inputShowed: false
-    });
-  },
-  clearInput: function () {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function (e) {
-    this.setData({
-      inputVal: e.detail.value
+      value: e.detail
     });
   },
 
@@ -42,7 +50,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    ajax.getData("http://www.xiongmaoyouxuan.com/api/search/home")
+      .then(res => {
+        this.setData({
+          hotWords: res.hotWords.filter((word,index) => index < 10)
+        })
+      })
   },
 
   /**

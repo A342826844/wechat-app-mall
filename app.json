@@ -4,7 +4,8 @@
     "pages/mall/mall",
     "pages/cart/cart",
     "pages/user/user",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/other/other"
   ],
   "tabBar": {
     "list": [

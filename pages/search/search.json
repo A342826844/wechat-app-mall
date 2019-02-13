@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-search": "/lib/vant/dist/search/index",
+    "van-tag": "/lib/vant/dist/tag/index",
+    "van-panel": "/lib/vant/dist/panel/index"
+  }
 }
