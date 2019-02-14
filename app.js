@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
+    this.getCartCount()
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -33,7 +34,26 @@ App({
       }
     })
   },
+  getCartCount(){
+    let cart = wx.getStorageSync("lxa_cart") ? JSON.parse(wx.getStorageSync("lxa_cart")) : []
+    let total = cart.reduce( (result,item) => {
+      result += item.count
+      return result  
+    },0)
+    this.totalBage = total > 99 ? '99+' : total.toString();
+    this.doShowBadge()
+  },
+  doShowBadge(){
+    this.totalBage =  this.totalBage !== "0" ? this.totalBage : ""
+    if(this.totalBage){
+      wx.setTabBarBadge({
+        index: 2,
+        text: this.totalBage
+      })
+    }
+  },
+  totalBage: "",
   globalData: {
-    userInfo: null
-  }
+    userInfo: null,
+  },
 })

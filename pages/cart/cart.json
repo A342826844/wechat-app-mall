@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-card": "/lib/vant/dist/card/index",
+    "van-tag": "/lib/vant/dist/tag/index",
+    "van-button": "/lib/vant/dist/button/index",
+    "van-submit-bar": "/lib/vant/dist/submit-bar/index",
+    "van-checkbox": "/lib/vant/dist/checkbox/index"
+  }
 }

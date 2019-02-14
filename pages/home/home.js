@@ -1,7 +1,26 @@
 // pages/home/home.js
 import ajax from '../../utils/ajax.js'
+const app = getApp()
 Page({
 
+  test(){
+    console.log(1)
+    const { id = 1232, count } = this.data
+    let cart = wx.getStorageSync("lxa_cart") ? JSON.parse(wx.getStorageSync("lxa_cart")) : []
+    const isInCart = cart.some(item => item.id === id)
+    if (isInCart) {
+      cart.map(item => {
+        if (item.id === id) {
+          item.count += 1
+        }
+        return item
+      })
+    } else {
+      cart.push({ id, count })
+    }
+    wx.setStorageSync("lxa_cart", JSON.stringify(cart))
+    app.getCartCount()
+  },
   /**
    * 页面的初始数据
    */
@@ -39,7 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.doShowBadge()
   },
 
   /**

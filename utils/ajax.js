@@ -6,11 +6,7 @@ class Ajax {
         url,
         method: 'GET',
         success: function (res) {
-          if (res.data.code === 200) {
             resolve(res.data.data)
-          } else {
-            reject(res)
-          }
         },
         fail: function (res) {
           // 直接在这里处理错误都是可以的

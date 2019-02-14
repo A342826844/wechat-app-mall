@@ -16,7 +16,7 @@
   </swiper>
 
   <van-card
-    num="2"
+    num="{{count}}"
     price="{{price}}"
     origin-price="{{originPrice}}"
     desc="月销量 {{saleNum}}"
@@ -74,9 +74,9 @@
 <view class='tabBar'>
 <van-goods-action>
   <van-goods-action-icon icon="chat-o" text="客服" bindtap='doChatHandle' />
-  <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartCount}}" />
   <van-goods-action-icon icon="shop-o" text="店铺" />
-  <van-goods-action-button text="加入购物车" type="warning" />
+  <van-goods-action-button text="加入购物车" type="warning" bindtap='addShopCart' />
   <van-goods-action-button text="立即购买" />
 </van-goods-action>
 </view>

@@ -1,2 +1,53 @@
 <!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class='content'>
+  <view
+    class='cart-item'
+    wx:for="{{cart}}"
+    wx:key="{{index}}"
+    style='border: 3px solid #fff;'
+  >
+    <van-card
+      num="2"
+      price="2.00"
+      origin-price="10.00"
+      desc="描述信息"
+      title="2018秋冬新款男士休闲时尚军绿飞行夹克秋冬新款男"
+      thumb="{{ imageURL }}"
+    >
+      <view slot="tags">
+        <van-tag plain type="danger" custom-class="tag">标签1</van-tag>
+        <van-tag plain type="danger">标签2</van-tag>
+      </view>
+      <view slot="footer" class="van-card__footer" style='display:flex'>
+        <van-checkbox
+          value="{{ allChecked }}"
+          checked-color="#07c160"
+          bind:change="handleAllCheck"
+          style='flex:1;text-align:left'
+        >选中</van-checkbox>
+        <van-button size="mini" round custom-class="button">加</van-button>
+        <van-button size="mini" round>减</van-button>
+      </view>
+    </van-card>
+  </view>
+</view>
+
+<view class='tabBar'>
+  <van-submit-bar
+    price="{{ 3050 }}"
+    button-text="提交订单"
+    bind:submit="onClickButton"
+    tip="{{ false }}"
+  >
+    <van-checkbox
+      value="{{ allChecked }}"
+      checked-color="#07c160"
+      bind:change="handleAllCheck"
+    >
+      全选
+    </van-checkbox>
+          <view slot="tip">
+      您的收货地址不支持同城送, <text>修改地址</text>
+    </view>
+  </van-submit-bar>
+</view>

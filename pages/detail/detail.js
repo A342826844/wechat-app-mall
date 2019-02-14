@@ -1,14 +1,37 @@
 // pages/detail/detail.js
 import ajax from '../../utils/ajax.js'
+const app = getApp()
 Page({
   doChatHandle(e){
     console.log(e)
   },
   togglePopupNum(e){
-    console.log(e)
     this.setData({
       numShow: !this.data.numShow
     })
+  },
+  setCartCount(){
+    app.getCartCount()
+    this.setData({
+      cartCount: app.totalBage ? app.totalBage : ""
+    })
+  },
+  addShopCart(e){
+    const { id, count} = this.data
+    let cart = wx.getStorageSync("lxa_cart") ? JSON.parse(wx.getStorageSync("lxa_cart")) : []
+    const isInCart = cart.some(item => item.id === id)
+    if(isInCart){
+      cart.map( item => {
+        if(item.id === id){
+          item.count += 1
+        }
+        return item
+      })
+    } else{
+      cart.push({id,count})
+    }
+    wx.setStorageSync("lxa_cart", JSON.stringify(cart))
+    this.setCartCount()
   },
   /**
    * 页面的初始数据
@@ -24,17 +47,19 @@ Page({
     price: 0,
     originPrice: 0,
     saleNum: 0,
-    numShow: false
+    numShow: false,
+    count: 1,
+    cartCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setCartCount()
     options.id = options.id ? options.id : 3202228
     ajax.getData(`http://www.xiongmaoyouxuan.com/api/detail?id=${options.id}&normal=1&sa=`)
       .then( res => {
-        console.log(res)
         const { title, price, originPrice, id, saleNum} = res.detail
         this.setData({
           title,

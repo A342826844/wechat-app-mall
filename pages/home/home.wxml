@@ -32,3 +32,4 @@
   >
     切换 Tab
   </navigator>
+<button bindtap='test'>test</button>

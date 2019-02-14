@@ -1,1 +1,23 @@
 /* pages/cart/cart.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  flex: 1;
+  overflow: auto
+}
+.tabBar{
+  height: 50px;
+}
+.tag,
+.button {
+  margin-right: 5px;
+}
+.card-item {
+  border: 3px solid #fff;
+}
+
+.van-card__footer {
+  margin-top: 5px;
+}

@@ -1,5 +1,6 @@
 // pages/mall/mall.js
 import ajax from '../../utils/ajax.js'
+const app = getApp()
 Page({
 
   lower(e){
@@ -69,7 +70,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.doShowBadge()
   },
 
   /**
