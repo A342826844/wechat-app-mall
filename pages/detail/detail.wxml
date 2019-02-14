@@ -14,11 +14,66 @@
       </swiper-item>
     </block>
   </swiper>
+
+  <van-card
+    num="2"
+    price="{{price}}"
+    origin-price="{{originPrice}}"
+    desc="月销量 {{saleNum}}"
+    title="{{title}}"
+  >
+    <view slot="tags">
+      <van-tag
+        plain
+        type="danger"
+        wx:for="{{hints}}"
+        wx:key="{{index}}"
+      >{{item}}</van-tag>
+    </view>
+  </van-card>
+
+  <van-popup
+    show="{{ numShow }}"
+    position="bottom"
+    overlay="{{ false }}"
+    bind:close="togglePopupNum"
+  >
+  xxx
+  </van-popup>
+
+    <van-cell is-link bindtap="togglePopupNum">
+      <view slot="title">
+        <text class="van-cell-text">规格:</text>
+        <text>请选择 </text>
+        <text>请选择 </text>
+      </view>
+    </van-cell>
+
+ 
+  <van-cell
+    is-link
+  >
+    <view slot="title">
+      <text class="van-cell-text">数量:</text>
+      <text>请选择 </text>
+      <text>请选择 </text>
+    </view>
+  </van-cell>
+
+  <view>
+    <image
+      wx:for="{{contentList}}"
+      mode='widthFix'
+      src='{{item.photo.url}}'
+      wx:key="index"
+      style='margin: 2px 0'
+    ></image>
+  </view>
 </view>
 
-<view>
+<view class='tabBar'>
 <van-goods-action>
-  <van-goods-action-icon icon="chat-o" text="客服" />
+  <van-goods-action-icon icon="chat-o" text="客服" bindtap='doChatHandle' />
   <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
   <van-goods-action-icon icon="shop-o" text="店铺" />
   <van-goods-action-button text="加入购物车" type="warning" />

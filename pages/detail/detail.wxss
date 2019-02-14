@@ -1,1 +1,12 @@
 /* pages/detail/detail.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  flex: 1;
+  overflow: auto
+}
+.tabBar{
+  height: 50px;
+}

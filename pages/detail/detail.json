@@ -2,6 +2,11 @@
   "usingComponents": {
     "van-goods-action": "/lib/vant/dist/goods-action/index",
     "van-goods-action-icon": "/lib/vant/dist/goods-action-icon/index",
-    "van-goods-action-button": "/lib/vant/dist/goods-action-button/index"
+    "van-goods-action-button": "/lib/vant/dist/goods-action-button/index",
+    "van-card": "/lib/vant/dist/card/index",
+    "van-tag": "/lib/vant/dist/tag/index",
+    "van-cell": "/lib/vant/dist/cell/index",
+    "van-cell-group": "/lib/vant/dist/cell-group/index",
+    "van-popup": "/lib/vant/dist/popup/index"
   }
 }

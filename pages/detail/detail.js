@@ -1,7 +1,15 @@
 // pages/detail/detail.js
 import ajax from '../../utils/ajax.js'
 Page({
-
+  doChatHandle(e){
+    console.log(e)
+  },
+  togglePopupNum(e){
+    console.log(e)
+    this.setData({
+      numShow: !this.data.numShow
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -15,7 +23,8 @@ Page({
     title: '',
     price: 0,
     originPrice: 0,
-    saleNum: 0
+    saleNum: 0,
+    numShow: false
   },
 
   /**
@@ -34,7 +43,7 @@ Page({
           id,
           saleNum,
           banner: res.detail.photo,
-          contentList: res.detail.descContentList,
+          contentList: res.detail.descContentList.filter(item => (item.type === 1)),
           hints: res.detail.accessoryHints
         })
       })
